@@ -39,6 +39,31 @@ def no_match_func(a: 1):
     return 6
 
 
+@Match
+def expr_func(a: 'a < 3'):
+    return 3
+
+
+@Match
+def expr_func(a: 'a > 4'):
+    return 4
+
+
+@Match
+def expr_func(a: 'a == 3'):
+    return 5
+
+
+@Match
+def expr_func(a):
+    return 6
+
+
+@Match
+def syntax_error_func(a: 'a <!> 2'):
+    return 1
+
+
 def test_matcher():
     assert(func(5, 3) == 0)
     assert(func(3, 5) == 1)
@@ -67,3 +92,15 @@ def test_no_match():
     with pytest.raises(TypeError):
         no_match_func(7)
     assert(no_match_func(1) == 6)
+
+
+def test_expressions():
+    assert(expr_func(1) == 3)
+    assert(expr_func(5) == 4)
+    assert(expr_func(3) == 5)
+    assert(expr_func(4) == 6)
+
+
+def test_syntax_error_expressions():
+    with pytest.raises(SyntaxError):
+        syntax_error_func(1)

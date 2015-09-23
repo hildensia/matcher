@@ -18,7 +18,11 @@ class Match:
             kw.update(dict(zip(list(params), args)))
             for ann in func.__annotations__:
                 if func.__annotations__[ann] != kw[ann]:
-                    break
+                    if not isinstance(func.__annotations__[ann], str):
+                        break
+                    exec(ann + " = kw[ann]")
+                    if not eval(func.__annotations__[ann]):
+                        break
             else:
                 return func(*args, **kwargs)
         else:
