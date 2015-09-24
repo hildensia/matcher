@@ -40,17 +40,17 @@ def no_match_func(a: 1):
 
 
 @Match
-def expr_func(a: 'a < 3'):
+def expr_func(a) -> 'a < 3':
     return 3
 
 
 @Match
-def expr_func(a: 'a > 4'):
+def expr_func(a) -> 'a > 4':
     return 4
 
 
 @Match
-def expr_func(a: 'a == 3'):
+def expr_func(a) -> 'a == 3':
     return 5
 
 
@@ -60,17 +60,17 @@ def expr_func(a):
 
 
 @Match
-def syntax_error_func(a: 'a <!> 2'):
+def syntax_error_func(a) -> 'a <!> 2':
     return 1
 
 
 @Match
-def multi_var_expr_func(a: 'a > b', b):
+def multi_var_expr_func(a, b) -> 'a > b':
     return 0
 
 
 @Match
-def multi_var_expr_func(a: 'a <= b', b):
+def multi_var_expr_func(a, b) -> 'a <= b':
     return 1
 
 
