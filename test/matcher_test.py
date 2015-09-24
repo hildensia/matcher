@@ -64,6 +64,16 @@ def syntax_error_func(a: 'a <!> 2'):
     return 1
 
 
+@Match
+def multi_var_expr_func(a: 'a > b', b):
+    return 0
+
+
+@Match
+def multi_var_expr_func(a: 'a <= b', b):
+    return 1
+
+
 def test_matcher():
     assert(func(5, 3) == 0)
     assert(func(3, 5) == 1)
@@ -99,6 +109,12 @@ def test_expressions():
     assert(expr_func(5) == 4)
     assert(expr_func(3) == 5)
     assert(expr_func(4) == 6)
+
+
+def test_expressions_with_all_parameters():
+    assert(multi_var_expr_func(2, 1) == 0)
+    assert(multi_var_expr_func(1, 1) == 1)
+    assert(multi_var_expr_func(1, 2) == 1)
 
 
 def test_syntax_error_expressions():

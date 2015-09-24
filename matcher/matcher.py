@@ -17,10 +17,12 @@ class Match:
             params = signature(func).parameters
             kw.update(dict(zip(list(params), args)))
             for ann in func.__annotations__:
+                for param in params:
+                    exec(param + " = kw[param]")
                 if func.__annotations__[ann] != kw[ann]:
                     if not isinstance(func.__annotations__[ann], str):
                         break
-                    exec(ann + " = kw[ann]")
+
                     if not eval(func.__annotations__[ann]):
                         break
             else:
