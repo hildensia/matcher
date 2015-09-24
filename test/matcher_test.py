@@ -74,6 +74,11 @@ def multi_var_expr_func(a, b) -> 'a <= b':
     return 1
 
 
+@Match
+def truthy_value_expr_func() -> (1 < 2):
+    return 0
+
+
 def test_matcher():
     assert(func(5, 3) == 0)
     assert(func(3, 5) == 1)
@@ -115,6 +120,10 @@ def test_expressions_with_all_parameters():
     assert(multi_var_expr_func(2, 1) == 0)
     assert(multi_var_expr_func(1, 1) == 1)
     assert(multi_var_expr_func(1, 2) == 1)
+
+
+def test_truthy_value_expr():
+    assert(truthy_value_expr_func() == 0)
 
 
 def test_syntax_error_expressions():
