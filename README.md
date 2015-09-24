@@ -26,16 +26,16 @@ You can match everything that defines a `__eq__` function:
 
 ## Expression matching
 
-You can also match against expressions, that evaluate to a truthy value. In these expressions all parameters are set to their actual value at runtime:
+You can also match against expressions, that evaluate to a truthy value. In these expressions all parameters are set to their actual value at runtime. Unfortunately we have to put them in a string to evaluate them at call time. (You can also put any truthy expression there, that evaluates at definition time):
 
 
     @Match
-    def multi_var_expr_func(a: 'a > b', b):
+    def multi_var_expr_func(a, b) -> 'a > b':
         print("a is bigger than b")
 
 
     @Match
-    def multi_var_expr_func(a: 'a <= b', b):
+    def multi_var_expr_func(a, b) -> : 'a <= b':
         print("b is bigger than or equal to a")
 
 
