@@ -28,8 +28,6 @@ class Match:
                     if not func.__annotations__[ann]:
                         break
 
-
-
                 elif func.__annotations__[ann] != kw[ann]:
                     break
 
