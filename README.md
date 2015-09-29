@@ -35,7 +35,7 @@ You can also match against expressions, that evaluate to a truthy value. In thes
 
 
     @Match
-    def multi_var_expr_func(a, b) -> : 'a <= b':
+    def multi_var_expr_func(a, b) -> 'a <= b':
         print("b is bigger than or equal to a")
 
 
