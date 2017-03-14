@@ -1,4 +1,5 @@
 # matcher
+[![Build Status](https://semaphoreci.com/api/v1/hildensia/matcher/branches/master/shields_badge.svg)](https://semaphoreci.com/hildensia/matcher)
 A haskell like pattern matching for python 3.
 
 
